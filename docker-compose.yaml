@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./app:/var/www/html
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./php
+    volumes:
+      - ./app:/var/www/html
+    expose:
+      - "9000"  # PHP-FPM default port
+
+  mysql:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: supermarche
+      MYSQL_USER: marche_user
+      MYSQL_PASSWORD: sup_pass321
+    ports:
+      - "3307:3306"
