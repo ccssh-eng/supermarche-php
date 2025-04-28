@@ -26,6 +26,6 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./php/Dockerfile   # <<< très important ici
+          file: ./php/Dockerfile     # <<< AJOUTER CETTE LIGNE
           push: true
           tags: scedric/supermarche:latest
