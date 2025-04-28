@@ -34,10 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
             // Insérer dans la base
-            $stmt = $pdo->prepare("INSERT INTO users (nom, email, mot_de_passe) VALUES (?, ?, ?)");
-            if ($stmt->execute([$nom, $email, $hashed_password])) {
+            $stmt = $pdo->prepare("INSERT INTO users (nom, email, mot_de_passe, role) VALUES (?, ?, ?)");
+            if ($stmt->execute([$nom, $email, $hashed_password, $role])) {
                 // Inscription réussie ➔ redirection vers connexion
-                header("Location: /supermarche/signin.php?success=1");
+                header("Location: /signin.php?success=1");
                 exit;
             } else {
                 $errors[] = "Erreur lors de l'insertion en base.";

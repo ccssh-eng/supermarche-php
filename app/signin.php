@@ -28,20 +28,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Connexion réussie : enregistrer les infos en session
             $_SESSION['user_id'] = $user['id'];
             $_SESSION['nom'] = $user['nom'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $user['role'];   //ligne 31
 
             // Redirection propre
 // Redirection selon le rôle
 switch ($_SESSION['role']) {
     case 'admin':
-        header("Location: /supermarche/admin_dashboard.php");
+        header("Location: /admin_dashboard.php");
         break;
     case 'employe':
-        header("Location: /supermarche/interface_commandes.php");
+        header("Location: /interface_commandes.php");
         break;
-    case 'client':
+    case 'client':    // ligne 44
     default:
-        header("Location: /supermarche/accueil.php");
+        header("Location: /accueil.php");
         break;
 }
 exit;
