@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: supermarche
-          image: scedric/supermarche:v2   # <<< ton image DockerHub !
+          image: scedric/supermarche:v3   # <<< ton image DockerHub !
           ports:
             - containerPort: 80
