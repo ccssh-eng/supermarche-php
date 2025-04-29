@@ -3,10 +3,11 @@ kind: Service
 metadata:
   name: supermarche-service
 spec:
-  type: LoadBalancer
+  type: NodePort
   selector:
     app: supermarche
   ports:
     - protocol: TCP
       port: 80
       targetPort: 80
+      nodePort: 30080   # <<< Ajout d'un port fixe
