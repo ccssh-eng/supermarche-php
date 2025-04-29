@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: supermarche
+  labels:
+    app: supermarche
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: supermarche
+  template:
+    metadata:
+      labels:
+        app: supermarche
+    spec:
+      containers:
+        - name: supermarche
+          image: ccssh-eng/supermarche:latest   # <<< ton image DockerHub !
+          ports:
+            - containerPort: 80
